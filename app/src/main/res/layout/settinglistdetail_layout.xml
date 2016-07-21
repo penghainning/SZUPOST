@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/srv">
+
+        <LinearLayout
+            android:background="@mipmap/receive_listdetailbackground"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:shrinkColumns="1"
+                android:id="@+id/tableLayout"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="下单用户："
+                        android:textSize="25sp"
+                        android:id="@+id/t2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/nameview" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="快递名称："
+                        android:textSize="25sp"
+                        android:id="@+id/text1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/postnameview" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="快递货号："
+                        android:textSize="25sp"
+                        android:id="@+id/text2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/numberview" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="手机号码："
+                        android:textSize="25sp"
+                        android:id="@+id/text3" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/phonenumberview" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="姓名："
+                        android:textSize="25sp"
+                        android:id="@+id/text4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/usrnameview" />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="订单号："
+                        android:textSize="25sp"
+                        android:id="@+id/t1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/onumberview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="首要交接地点："
+                        android:textSize="25sp"
+                        android:id="@+id/text5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/addressview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="快递地点："
+                        android:textSize="25sp"
+                        android:id="@+id/text6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/postlocationview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="最晚收货时间："
+                        android:textSize="25sp"
+                        android:id="@+id/text7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/deadlineview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="订单状态："
+                        android:textSize="25sp"
+                        android:id="@+id/text8" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text=""
+                        android:textSize="25sp"
+                        android:id="@+id/flagview" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_height="20dp"
+                android:layout_weight="0.3">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="和他联系"
+                    android:id="@+id/chat" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

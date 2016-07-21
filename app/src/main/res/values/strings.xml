@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SZUpost</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="tab_receive">接单</string>
+    <string name="tab_send">下单</string>
+    <string name="tab_data">资料</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

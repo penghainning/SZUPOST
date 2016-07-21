@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/srv">
+
+        <LinearLayout
+            android:background="@mipmap/receive_listdetailbackground"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:shrinkColumns="1"
+                android:id="@+id/tableLayout"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="快递名称："
+                        android:textSize="25sp"
+                        android:id="@+id/text1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="中通快递"
+                        android:textSize="25sp"
+                        android:id="@+id/postnameview" />
+
+                </TableRow>
+
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="首要交接地点："
+                        android:textSize="25sp"
+                        android:id="@+id/text5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="南区"
+                        android:textSize="25sp"
+                        android:id="@+id/addressview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="快递地点："
+                        android:textSize="25sp"
+                        android:id="@+id/text6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="杜鹃山"
+                        android:textSize="25sp"
+                        android:id="@+id/postlocationview" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="最晚收货时间："
+                        android:textSize="25sp"
+                        android:id="@+id/text7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="5月10号16点"
+                        android:textSize="25sp"
+                        android:id="@+id/deadlineview" />
+                </TableRow>
+            </TableLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_weight="0.38">
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="我要接单"
+                    android:id="@+id/sure"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginStart="55dp" />
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="跟Ta聊聊"
+                    android:id="@+id/chat"
+                    android:layout_alignTop="@+id/sure"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="55dp"
+                    android:layout_marginEnd="55dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

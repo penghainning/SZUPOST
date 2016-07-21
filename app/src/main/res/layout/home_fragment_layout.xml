@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1E0DE"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/mymessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/home_liner"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/home_image" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/myname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="用户666"
+                android:textColor="#000"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/myaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="用户666"
+                android:textColor="#000"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mysetting"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/home_liner"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home_setting" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="设置"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical|right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:src="@mipmap/home_arrow" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/receivebutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/corners_bg"
+        android:padding="10dp"
+        android:clickable="true">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接单者："
+                android:id="@+id/textView8" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单情况"
+                android:id="@+id/rabout" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/sendbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/corners_bg"
+        android:padding="10dp"
+        android:clickable="true">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下单者："
+                android:id="@+id/textView9" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单情况"
+                android:id="@+id/sabout" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

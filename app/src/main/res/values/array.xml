@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="location">
+            <item>杜鹃山</item>
+            <item>南区二三栋之间</item>
+            <item>学活</item>
+            <item>其他</item>
+        </string-array>
+
+    <string-array name="address">
+        <item>斋区</item>
+        <item>西南</item>
+        <item>南区</item>
+        <item>阁区</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+    </resources>
