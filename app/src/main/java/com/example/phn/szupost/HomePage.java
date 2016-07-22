@@ -1,6 +1,7 @@
 package com.example.phn.szupost;
 
 import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -9,18 +10,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.jauker.widget.BadgeView;
-
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,11 +28,13 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
     private RadioButton sendlist;
     private RadioButton rb_better;
     private ViewPager vpager;
+    static int msgi=0;
     private ActionBar acb;
     private SocketApplication socketapp;
     private MessageService msgservice;
     private MyFragmentPagerAdapter mAdapter;
     private HashMap<String,List<String>> hmap;
+    private ChatHelper chatHelper;
     public static final int PAGE_ONE = 0;
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
@@ -67,6 +66,8 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
         vpager.setCurrentItem(0);
         vpager.addOnPageChangeListener(this);
         receivelist.setChecked(true);
+        chatHelper=new ChatHelper(this,null,1);
+        chatHelper.getWritableDatabase();
 
     }
 
@@ -86,10 +87,6 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
             //注册回调接口来接收信息
             msgservice.setListener(new msgListener() {
                 public void onFinish(String content) {
-                   /* View view = findViewById(R.id.message);
-                    BadgeView badgeview = new BadgeView(HomePage.this);
-                    badgeview.setTargetView(view);
-                    badgeview.setBadgeCount(1);*/
                     Myhandel(content);
                 }
             });
@@ -108,6 +105,8 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
         switch (item.getItemId())
         {
             case R.id.message:
+               Intent intent=new Intent(this,Chatlist.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -191,9 +190,17 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
                 ReceiveFragment rf2=(ReceiveFragment)vpager.getAdapter().instantiateItem(vpager,0);
                 rf2.Flush(s);
                 break;
-            case "ACCEPT":
+            case "GETA":
                 //发送广播
                  intent = new Intent("com.example.phn.szupost.RECEIVER");
+                intent.putExtra("type",2);
+                intent.putExtra("returndata",s);
+                sendBroadcast(intent);
+                break;
+            case "ACCEPT":
+                //发送广播
+                intent = new Intent("com.example.phn.szupost.RECEIVER");
+                intent.putExtra("type",1);
                 intent.putExtra("returndata",s);
                 sendBroadcast(intent);
                 break;
@@ -247,7 +254,45 @@ public class HomePage extends AppCompatActivity implements RadioGroup.OnCheckedC
                 intent.putExtra("type","2");
                 sendBroadcast(intent);
                 break;
-
+            case "SEND":
+                try{
+                     JSONObject json=new JSONObject(s);
+                    String tablename=json.getString("from");
+                    String username=json.getString("name");
+                    String msg=json.getString("msg");
+                    if(!chatHelper.myselect(tablename))
+                    {
+                        chatHelper.createTable(tablename);
+                    }
+                    //插入数据库
+                    ContentValues values=new ContentValues();
+                    values.put("content",msg);
+                    values.put("time",TimeManager.getTime());
+                    values.put("username",username);
+                    values.put("state",1);
+                    values.put("type",1);
+                    chatHelper.insert(values,tablename);
+                    View view = findViewById(R.id.message);
+                    BadgeView badgeview = new BadgeView(HomePage.this);
+                    badgeview.setTargetView(view);
+                    badgeview.setBadgeCount(msgi);
+                    msgi++;
+                    //判断聊天界面是否存在
+                    Intent tent = new Intent();
+                    tent.setClassName(getPackageName(),"Chat");
+                    if (getPackageManager().resolveActivity(tent, 0) != null)
+                    {
+                        //发送广播
+                        intent = new Intent("com.example.phn.szupost.SEND");
+                        sendBroadcast(intent);
+                    }
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                break;
 
         }
     }

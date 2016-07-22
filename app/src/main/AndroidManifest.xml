@@ -23,6 +23,8 @@
         <activity android:name=".Setting" />
         <activity android:name=".SettingListDetail" />
         <activity android:name=".Systemsetting" />
+        <activity android:name=".Chat" />
+        <activity android:name=".Chatlist" />
         <activity android:name=".Changename" />
 
         <service
@@ -33,7 +35,7 @@
         <activity android:name=".Receive_listdetail" />
         <activity android:name=".RList" />
         <activity android:name=".SList" />
-        <activity android:name=".JListdetail"></activity>
+        <activity android:name=".JListdetail" />
     </application>
 
 </manifest>

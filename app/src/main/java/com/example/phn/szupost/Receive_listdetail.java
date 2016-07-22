@@ -86,7 +86,7 @@ public class Receive_listdetail extends AppCompatActivity {
                         else
                         {
                             success=false;
-                            new MyThread().start();
+                            new MyThread(1).start();
                             dialog.dismiss();
                             new Thread(new Runnable() {
                                 public void run() {
@@ -122,11 +122,41 @@ public class Receive_listdetail extends AppCompatActivity {
                 builder.show();
             }
         });
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                success=false;
+                new MyThread(2).start();
+                new Thread(new Runnable() {
+                    public void run() {
+                        for(int i=0;i<10;i++) {
+                            try {
+                                Thread.sleep(200);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            if (success)
+                                break;
+                        }
+                        if(!success)
+                        {
+                            myHandler.sendEmptyMessage(2);
+                        }
+                    }
+                }).start();
+
+            }
+        });
     }
 
     //确认接单的线程
     class MyThread extends Thread {
-        MyThread(){}
+        private int n;
+        MyThread(int n)
+        {
+            this.n=n;
+        }
         public void run()
         {
             if (!socketapp.isNetflag()) {
@@ -134,12 +164,25 @@ public class Receive_listdetail extends AppCompatActivity {
                 myHandler.sendEmptyMessage(-1);
             }
                 try {
-                    String head = "ACCEPT";
-                    JSONObject json = new JSONObject();
-                    json.put("head", head);
-                    json.put("id", id);
-                    socketapp.sendString(json.toString(),socketapp.getMysocket().getOutputStream());
-                    Log.i("Receive_listdetail","发送成功！"+head+" "+id);
+                    if(n==1)
+                    {
+                        String head = "ACCEPT";
+                        JSONObject json = new JSONObject();
+                        json.put("head", head);
+                        json.put("id", id);
+                        socketapp.sendString(json.toString(),socketapp.getMysocket().getOutputStream());
+                        Log.i("Receive_listdetail","发送成功！"+head+" "+id);
+                    }
+                    else if(n==2)
+                    {
+                        String head = "GETA";
+                        JSONObject json = new JSONObject();
+                        json.put("head", head);
+                        json.put("onumber", d.getOnumber());
+                        socketapp.sendString(json.toString(),socketapp.getMysocket().getOutputStream());
+                        Log.i("Receive_listdetail","发送成功！"+head+" "+id);
+                    }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -150,12 +193,13 @@ public class Receive_listdetail extends AppCompatActivity {
 
 
     Handler myHandler = new Handler() {
-        public void handleMessage(Message msg) {    //接受服务器信息更新UI
+        public void handleMessage(Message msg) {//接受服务器信息更新UI
+            //将handler中发送过来的消息创建json对象
+            Bundle bundle = msg.getData();
             switch (msg.what) {
+
                 case 0:
                     try {
-                        //将handler中发送过来的消息创建json对象
-                        Bundle bundle = msg.getData();
                         JSONObject json = new JSONObject( bundle.getString("return"));
                         Log.i("Receive_listdetail","接收成功！"+json.getString("head")+" "+json.getString("isSuccess"));
                         if (json.getString("head").equals("ACCEPT")) {
@@ -219,6 +263,21 @@ public class Receive_listdetail extends AppCompatActivity {
                 case 2:
                     Toast.makeText(Receive_listdetail.this, "连接超时，请重试！", Toast.LENGTH_SHORT).show();
                     break;
+                case 3:
+                    try {
+                        JSONObject json = new JSONObject( bundle.getString("return"));
+                        if (json.getString("head").equals("GETA")) {
+                            Intent intent=new Intent(Receive_listdetail.this,Chat.class);
+                            String account=json.getString("account");
+                            String name=json.getString("name");
+                            intent.putExtra("account",account);
+                            intent.putExtra("name",name);
+                            startActivity(intent);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
             }
             super.handleMessage(msg);
         }
@@ -239,7 +298,10 @@ public class Receive_listdetail extends AppCompatActivity {
             Log.i("listdatareceiver: ","收到消息："+intent.getStringExtra("returndata"));
             bundle.putString("return",intent.getStringExtra("returndata"));
             msg.setData(bundle);
+            if(intent.getIntExtra("type",-1)==1)
             msg.what=0;
+            else if(intent.getIntExtra("type",-1)==2)
+                msg.what=3;
             success=true;
             myHandler.sendMessage(msg);
         }

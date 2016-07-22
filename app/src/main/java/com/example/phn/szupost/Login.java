@@ -150,7 +150,7 @@ public class Login extends AppCompatActivity {
                                 {
                                     String[] a = new String[4];
                                     a[0] = json.getString("account");
-                                    a[1] = "";
+                                    a[1] = "新用户"+a[0];
                                     a[2] = "";
                                     a[3] = "";
                                     //设置用户数据
